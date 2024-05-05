@@ -1,19 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>job timer</title>
+    <link rel="stylesheet" href="{% static 'time_management/style.css' %}">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Salam aleykum!</h1>
-    {% block content %}
-    {% endblock %}
-    <p>supeeeer!</p>
+    <header class="header">
+        <img src="">
+        <span class="client-names">Chyngyz</span>
+        <ul class="header-list">
+            <li class="header-link"></li>
+            <li class="header-link"></li>
+            <li class="header-link"></li>
+        </ul>
+    </header>
     <div class="container">
-        <a href="{% url 'gorilla' %}">jungle</a>
-        <a href="#">go</a>
+        <main>
+            <div class="container">
+                <form action="">
+                    <input type="submit" class="time-btn" value="Start">
+                </form>
+            </div>
+        </main>
     </div>
+    <script src="{% static 'time_management/work.js' %}"></script>
 </body>
 </html>
