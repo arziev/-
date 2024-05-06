@@ -1,0 +1,12 @@
+{% extends 'time_management/layout.html' %}
+
+{% block content %}
+<form action="{% url 'register' %}" class="register-form" method="POST">
+    {% csrf_token %}
+    <input type="text" name="Name" placeholder="Введите ваше ФИО"  class="form-control">
+    <input type="text" name="Password" placeholder="Введите пароль" class="form-control">
+    <input type="text" name="Password_check" placeholder="Повторите пароль" class="form-control">
+    <input type="submit" class="register-btn">
+</form>
+<p class="register-text">Если у вас есть аккаунт<a class="register-link" href="{% url 'login' %}">Войти</a></p>
+{% endblock %}
