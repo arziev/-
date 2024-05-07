@@ -1,31 +1,61 @@
 from django.shortcuts import render
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login as auth_login, logout, authenticate
 from django.urls import reverse
+from django.db import IntegrityError
+
 from django.http import HttpResponseRedirect
 from .models import *
 # Create your views here.
 
-def index(request):
-    return render(request, 'time_management/index.html')
+def main(request):
+    return render(request, 'time_management/main.html')
 
 def login(request):
     if request.method == 'POST':
-        pass
+        name = request.POST['name']
+        password = request.POST['password']
+        employee = authenticate(request, name=name, password=password)
+        
+        if employee != None:
+            login(request, name)
+            return HttpResponseRedirect(reverse("main"))
+        else:
+            return render(request, 'time_management/login.html', {"problem":"Неправильный логин или пороль. Повторите попытку.."})
     else:
         return render(request, 'time_management/login.html')
 
 def register(request):
-    if request.method == 'POST':
-        name = request['name']
-        password = request['password']
-        password_check = request['password_check']
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+
+        password = request.POST["password"]
+        password_check = request.POST["password_check"]
+        # email ="hello@gamil.com"
         if password == password_check:
-            user = User.objects.create_user(name, password)
-            user.save()
-            login(request, user)
+            try:
+                user = User.objects.create_user(username, email, password)
+                # user = User.objects.create_user(username, email, password)
+
+                user.save()
+            except IntegrityError:
+                print('hello')
+                return render(request, 'time_management/register.html')
+
+        # # Attempt to create new user
+        # try:
+        #     user = User.objects.create_user(username, email, password)
+        #     user.save()
+        # except IntegrityError:
+        #     return render(request, "auctions/register.html", {
+        #         "message": "Username already taken."
+        #     })
+        # login(request, user)
+        # return HttpResponseRedirect(reverse("index"))
+            auth_login(request, user)
             return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request, 'time_management/register', {"problem": "Пароли не совпадают. Повтортите попытку.."})
+            return render(request, 'time_management/register.html', {"problem": "Пароли не совпадают. Повтортите попытку.."})
         
     # else:
     print(request)

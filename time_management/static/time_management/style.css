@@ -9,7 +9,6 @@ html * {
     display: flex;
     padding: 20px;
     background-color: rgb(167, 178, 189);
-    margin-bottom: 50px;
 }
 
 .timer-btn{

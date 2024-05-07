@@ -2,9 +2,9 @@
 
 {% block content %}
 <form action="" class="login-form">
-    {% csrf_token %}
-    <input type="text" name="Name" placeholder="ФИО"  class="form-control">
-    <input type="text" name="Password" placeholder="Пароль" class="form-control">
+    {% csrf_token%}
+    <input type="text" name="name" placeholder="ФИО"  class="form-control">
+    <input type="text" name="password" placeholder="Пароль" class="form-control">
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Войти</button>
       </div>
