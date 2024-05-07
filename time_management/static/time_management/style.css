@@ -1,0 +1,49 @@
+html * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    margin: 0;
+    display: flex;
+    padding: 20px;
+    background-color: rgb(167, 178, 189);
+    margin-bottom: 50px;
+}
+
+.timer-btn{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.client-name {
+    margin-right: auto;
+}
+
+.header-list {
+    display: flex;
+    list-style: none;
+}
+
+.time-btn {
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 100%;
+    font-size: 40px;
+    border: none;
+    color: aliceblue;
+    background-color: green;
+    box-shadow: 0px 0px 40px 0px rgba(1, 85, 30, 0.75);
+}
+
+/* Login */
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
