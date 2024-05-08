@@ -40,7 +40,7 @@ def register(request):
                 user.save()
             except IntegrityError:
                 print('hello')
-                return render(request, 'time_management/register.html')
+                return render(request, 'time_management/register.html', {"problem": "Вы уже зарегистрироавны..."})
 
         # # Attempt to create new user
         # try:
