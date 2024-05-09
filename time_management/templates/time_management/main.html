@@ -1,9 +1,14 @@
 {% extends 'time_management/layout.html' %}
+    {% block content %}
 
-{% block content %}
+        {% if mes %}
+            {{mes}}
+        {% endif %}
         <div class="container">
-            <form action="" class="timer-btn">
-                <input type="submit" class="time-btn" value="Start">
+            <form action="{% url 'main' %}" id="timer-form"  method="POST">
+                {% csrf_token %}
+                <input type="text" name="count" class="timer-hidden"    >
+                <input type="submit" class="time-btn" value="Start" name="timer_btn">
             </form>
         </div> 
 {% endblock %}

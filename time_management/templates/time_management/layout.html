@@ -11,12 +11,11 @@
 </head>
 <body>
     <header class="header">
-        {% comment %} {% if request.employee.is_authentacated %} {% endcomment %}
         {% if user.is_authenticated %}
             <img src="">
-            <span class="client-name">{{ user.name }}</span>
+            <span class="client-name">{{ user.username }}</span>
             <ul class="header-list">
-                <li class="header-link">{{ employee.username }}</li>
+                <li class="header-link"></li>
                 <li class="header-link"></li>
                 <li class="header-link"><a href="{% url 'logout' %}">Выйти</a></li>
             </ul>

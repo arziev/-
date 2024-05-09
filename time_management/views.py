@@ -8,8 +8,18 @@ from .models import *
 # Create your views here.
 
 def main(request):
-    user = User()
-    return render(request, 'time_management/main.html', {"user": user})
+    # user = User()
+    if request.method == "POST":
+        print("hello")
+        print(request.POST['stop'])
+
+        print(request.POST.get('stop'))
+        return render(request, 'time_management/main.html', {"mes":"1000"})
+    else:
+        print(request.POST.get('count'))
+
+        return render(request, 'time_management/main.html')
+        
 
 def logout_fun(request):
     logout(request)
@@ -18,23 +28,17 @@ def logout_fun(request):
 
 def login_fun(request):
     if request.method == 'POST':
-        print("000")
-
         username = request.POST['name']
+        print(request.POST['name'])
         password = request.POST['password']
         employee = authenticate(request, username=username, password=password)
         
         if employee != None:
-            print("he")
             login(request, employee)
             return HttpResponseRedirect(reverse("main"))
         else:
-            print("no")
-            
             return render(request, 'time_management/login.html', {"problem":"Неправильный логин или пороль. Повторите попытку.."})
     else:
-        print("123")
-
         return render(request, 'time_management/login.html')
 
 def register(request):
@@ -65,7 +69,7 @@ def register(request):
         #     })
         # login(request, user)
         # return HttpResponseRedirect(reverse("index"))
-            auth_login(request, employee)
+            login(request, employee)
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, 'time_management/register.html', {"problem": "Пароли не совпадают. Повтортите попытку.."})
