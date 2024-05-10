@@ -11,13 +11,13 @@ from .models import *
 def main(request):
     # user = User()
     if request.method == "POST":
+        return render(request, 'time_management/main.html', {"work":"hello"})
         print(request.POST.get('timer'))
         # print(request.POST.get('count'))
-
+        hello ="hello"
         # print(request.POST.get('stop'))
-        return render(request, 'time_management/main.html', {"mes":"1000"})
     else:
-        print(request.POST.get('count'))
+        hello ="hello"
 
         return render(request, 'time_management/main.html')
         

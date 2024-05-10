@@ -1,8 +1,8 @@
 const timerBtn = document.querySelector('.time-btn');
 const timerForm = document.getElementById('timer-form');
 
-timerBtn.addEventListener('click', function(){
-    // event.preventDefault();
+timerBtn.addEventListener('click', function(event){
+    event.preventDefault();
     console.log("one");
     console.log(timerBtn.value);
     if(timerBtn.innerHTML === 'Start'){
