@@ -1,14 +1,16 @@
 {% extends 'time_management/layout.html' %}
-    {% block content %}
 
-        {% if mes %}
-            {{mes}}
-        {% endif %}
-        <div class="container">
-            <form action="{% url 'main' %}" id="timer-form"  method="POST">
-                {% csrf_token %}
-                <input type="text" name="count" class="timer-hidden"    >
-                <input type="submit" class="time-btn" value="Start" name="timer_btn">
-            </form>
-        </div> 
+{% block header %}
+<img src="">
+<span class="client-name">{{ user.username }}</span>
+<ul class="header-list">
+    <li class="header-link"></li>
+    <li class="header-link"></li>
+    <li class="header-link"><a href="{% url 'logout' %}">Выйти</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+    <div class="container timer-form">
+        <button class="time-btn">Start</button>
+    </div> 
 {% endblock %}

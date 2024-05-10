@@ -4,12 +4,18 @@ html * {
     padding: 0;
 }
 
+body {
+    background-color: #1c2329;
+}
+
+
 .header {
     margin: 0;
     display: flex;
     padding: 20px;
-    background-color: rgb(167, 178, 189);
+    background-color: rgb(50 50 49);
 }
+
 
 .timer-form{
     margin-top: 100px;
@@ -18,6 +24,7 @@ html * {
 }
 
 .client-name {
+    color: aliceblue;
     margin-right: auto;
 }
 
@@ -26,9 +33,6 @@ html * {
     list-style: none;
 }
 
-.timer-hidden {
-    display: none;
-}
 
 .time-btn {
     height: 200px;
@@ -39,14 +43,45 @@ html * {
     border: none;
     color: aliceblue;
     background-color: green;
-    box-shadow: 0px 0px 40px 0px rgba(1, 85, 30, 0.75);
+    box-shadow: 0px 0px 40px 0px rgb(24 178 77 / 75%);
 }
 
 /* Login */
 
-.login-form {
+.entrance-container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.entrance-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 50%;
+    padding: 35px 25px 25px;
+    border: 1px solid gray;
+    border-radius: 30px;
+    background-color: rgb(18 16 13);
+    width: 30%;
+}
+
+.entrance-sub {
+    margin-top: 40px;
+}
+
+.entrance-text {
+    color:aliceblue;
+    margin-right: 10p;
+}
+
+.form-control {
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+
+.btn {
+    padding: 6px 30px;
+    border-radius: 15px;
+
 }

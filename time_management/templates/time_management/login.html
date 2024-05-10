@@ -6,14 +6,17 @@
     {{ problem }}
 </div>
 {% endif %}
-
-<form action="{% url 'login' %}" class="login-form" method='POST'>
-    {% csrf_token%}
-    <input type="text" name="name" placeholder="ФИО"  class="form-control">
-    <input type="text" name="password" placeholder="Пароль" class="form-control">
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Войти</button>
-    </div>
-</form>
-<p class="login-text">Если у вас нет аккаунта<a class="login-link" href="{% url 'register' %}"> зарегистрируйтесь</a></p>
+<div class="entrance-container">
+    <form action="{% url 'login' %}" class="entrance-form" method='POST'>
+        {% csrf_token%}
+        <input type="text" name="name" placeholder="ФИО"  class="form-control">
+        <input type="text" name="password" placeholder="Пароль" class="form-control">
+        <div class="col-auto entrance-sub">
+            <button type="submit" class="btn btn-primary mb-3">Войти</button>
+        </div>
+        <div>
+            <p class="entrance-text">Если у вас нет аккаунта  <a class="login-link" href="{% url 'register' %}">  зарегистрируйтесь</a></p>
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -3,17 +3,18 @@ from django.contrib.auth import login, logout, authenticate
 from django.urls import reverse
 from django.db import IntegrityError
 
-from django.http import HttpResponseRedirect
+
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import *
 # Create your views here.
 
 def main(request):
     # user = User()
     if request.method == "POST":
-        print("hello")
-        print(request.POST['stop'])
+        print(request.POST.get('timer'))
+        # print(request.POST.get('count'))
 
-        print(request.POST.get('stop'))
+        # print(request.POST.get('stop'))
         return render(request, 'time_management/main.html', {"mes":"1000"})
     else:
         print(request.POST.get('count'))
