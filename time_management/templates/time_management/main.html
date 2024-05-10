@@ -10,8 +10,21 @@
 </ul>
 {% endblock %}
 {% block content %}
-<h1 class="message">{{ work }}</h1>
-    <div class="container timer-form">
-        <button class="time-btn">Start</button>
-    </div> 
+
+<div class="container timer-form">
+    
+    <h2 id="timerDisplay">00:00:00</h2>
+    <button class="time-btn">Start</button>
+    <p class="date-start"></p>
+    <p class="date-end"></p>
+</div> 
+
+
+<p>Текущее время: <time id="currentTime"></time></p>
+{% comment %} <button class="start-btn">Start</button>
+    <button class="end-btn">End</button>
+    <button  class="reset-btn">Reset</button> {% endcomment %}
 {% endblock %}
+
+
+

@@ -7,15 +7,19 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import *
 # Create your views here.
+base =[]
+
 
 def main(request):
     # user = User()
     if request.method == "POST":
+        date = request.POST.get('date')
+        start = request.POST.get('start') 
+        print(request.POST.get('amount'))
+        base.append(date)
+        base.append(start)
+        print(base)
         return render(request, 'time_management/main.html', {"work":"hello"})
-        print(request.POST.get('timer'))
-        # print(request.POST.get('count'))
-        hello ="hello"
-        # print(request.POST.get('stop'))
     else:
         hello ="hello"
 
@@ -71,7 +75,7 @@ def register(request):
         # login(request, user)
         # return HttpResponseRedirect(reverse("index"))
             login(request, employee)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("main"))
         else:
             return render(request, 'time_management/register.html', {"problem": "Пароли не совпадают. Повтортите попытку.."})
         

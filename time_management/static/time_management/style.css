@@ -19,11 +19,16 @@ body {
     background-color: rgb(50 50 49);
 }
 
+#timerDisplay {
+    color: aliceblue;
+}
 
 .timer-form{
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .client-name {
@@ -36,8 +41,13 @@ body {
     list-style: none;
 }
 
+#currentTime{
+    color: aliceblue;
+    margin-right: auto;
+}
 
 .time-btn {
+    margin-top: 40px;
     height: 200px;
     width: 200px;
     padding: 20px;
