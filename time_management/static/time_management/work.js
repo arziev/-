@@ -5,6 +5,10 @@ const endBtn = document.querySelector('.end-btn');
 const resetBtn = document.querySelector('.reset-btn');
 const dateStart = document.querySelector('.date-start');
 const dateEnd = document.querySelector('.date-end');
+const workTime = document.querySelector('.work-time');
+
+const begin = [];
+workTime.style.display = 'none';
 
 
 timerBtn.addEventListener('click', function(event){
@@ -12,53 +16,52 @@ timerBtn.addEventListener('click', function(event){
     console.log("one");
     console.log(timerBtn.value);
     if(timerBtn.innerHTML === 'Start'){
+        workTime.style.display = 'none';
+        
+        
         console.log("two");
+        resetTimer();
         startTimer();
         timerBtn.style.backgroundColor = '#d60000';
         timerBtn.style.boxShadow = '0px 0px 40px 0px rgb(196 35 95 / 75%)';
         timerBtn.innerHTML = "End";
         const now = new Date();
+        // var start = now.toLocaleTimeString();
+        begin.push(now.toLocaleTimeString())
         // let b = now.toLocaleDateString();
         console.log(now.toLocaleDateString());
-
-        dateStart.innerHTML = `${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
-        dateStart.style.color = 'white';
-
-        let formData = new FormData()
-        formData.append("timer", "start")
-        formData.append("date", now.toLocaleDateString())
-        formData.append("start", now.toLocaleTimeString())
-    
-        fetch('/main', { // it should send to this site, like a <form method="post" acction=""> does
-            method: 'POST',
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken")
-            },
-            body: formData
-        })
-
+        
     }else {
+        const now = new Date();
+        
         const amount = document.getElementById('timerDisplay').innerText;
-        console.log('three');
-        endTimer();
-        dateEnd.innerHTML = `${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
-        dateEnd.style.color = 'white';
-        let formData = new FormData()
-        formData.append("timer", "end")
-        formData.append("amount", amount)
-    
-        fetch('/main', { // it should send to this site, like a <form method="post" acction=""> does
-            method: 'POST',
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken")
-            },
-            body: formData
-        })
-        
-        
-        
+        const end = now.toLocaleTimeString();
+        const date = now.toLocaleDateString();
         timerBtn.style = 'inherit';
         timerBtn.innerHTML = "Start";
+        console.log('three');
+        endTimer();
+
+        workTime.style.display = 'flex';
+
+        workTime.innerHTML = `<strong>Дата: ${date}</strong><strong>Кол-во ${amount}</strong>`;
+
+        let formData = new FormData();
+        formData.append("start", begin[0]);
+        formData.append("end", end);
+        formData.append("date", date);
+        formData.append("amount", amount);
+        begin.pop();
+        console.log(begin)
+        
+        
+        fetch('/main', { // it should send to this site, like a <form method="post" acction=""> does
+            method: 'POST',
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken")
+            },
+            body: formData
+        })
     }
 });
 

@@ -7,8 +7,18 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     pass
 
+    class Meta:
+        verbose_name_plural = "Пользователи"
+
 class History(models.Model):
-    timer_date = models.DateTimeField(db_comment="Когда был использован таймер")
-    timer_start = models.TimeField(db_comment="Когда был использован таймер")
-    timer_end = models.TimeField(auto_now=True, auto_now_add=False)
+    date = models.CharField(max_length=30, null=True)
+    start = models.CharField(max_length=30, null=True)
+    end = models.CharField(max_length=30, null=True)
+    amount = models.CharField(max_length=30, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="user_history")
+
+    def __str__(self):
+        return f"{self.user}            {self.date}"
+
+    class Meta:
+        verbose_name_plural = "История"

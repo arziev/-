@@ -7,7 +7,6 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import *
 # Create your views here.
-base =[]
 
 
 def main(request):
@@ -15,16 +14,24 @@ def main(request):
     if request.method == "POST":
         date = request.POST.get('date')
         start = request.POST.get('start') 
+        end = request.POST.get('end') 
+        amount = request.POST.get('amount')
+        user = request.user 
         print(request.POST.get('amount'))
-        base.append(date)
-        base.append(start)
-        print(base)
-        return render(request, 'time_management/main.html', {"work":"hello"})
-    else:
-        hello ="hello"
+        print(request.POST.get('date'))
+        print(request.POST.get('start'))
+        print(request.POST.get('end'))
+        history = History(date=date, start=start, amount=amount, user=user, end=end)
+        history.save()
+        return render(request, 'time_management/main.html')
 
+    else:
         return render(request, 'time_management/main.html')
         
+
+def history(request):
+    archive = History.objects.filter(user=request.user)
+    return render(request, 'time_management/history.html', {"archive":archive})
 
 def logout_fun(request):
     logout(request)

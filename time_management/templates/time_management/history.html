@@ -11,18 +11,18 @@
 {% endblock %}
 {% block content %}
 
-<div class="container timer-form">
-    
-    <h2 id="timerDisplay">00:00:00</h2>
-    <button class="time-btn">Start</button>
-    <p class="date-start"></p>
-    <p class="date-end"></p>
+<ul class="history-list">
+    {% for item in archive %}
+    <li class="item">
+        <span class="info">{{item.date}}</span>
+        <span class="info">{{item.start}}</span>
+        <span class="info">{{item.end}}</span>
+        <span class="info">{{item.amount}}</span>
+    </li>
+    {% endfor %}
+</ul>
 
-    <div class="work-time"></div>
-</div> 
 
-
-<p class="current-time">Текущее время: <time id="currentTime"></time></p>
 {% comment %} <button class="start-btn">Start</button>
     <button class="end-btn">End</button>
     <button  class="reset-btn">Reset</button> {% endcomment %}

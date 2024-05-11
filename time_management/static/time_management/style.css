@@ -36,9 +36,48 @@ body {
     margin-right: auto;
 }
 
+.work-time {
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:aliceblue;
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.history-list {
+    margin-top: 10px;
+}
+
+.info {
+    font-weight: 500;
+}
+
+.item {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    background-color: rgb(120 120 120);
+    border-radius: 20px;
+}
+
+.work-time:first-child {
+    margin-bottom: 10px;
+}
+
+.current-time {
+    color: aliceblue;
+}
+
 .header-list {
     display: flex;
     list-style: none;
+}
+
+.header-link:last-child {
+    margin-left: 40px;
 }
 
 #currentTime{
